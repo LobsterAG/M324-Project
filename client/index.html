@@ -7,14 +7,15 @@
     <title>LB1 Chat - M324</title>
     <link rel="stylesheet" href="/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="/utils.js"></script>
-    <script src="/script.js"></script>
+    <script src="utils.js"></script>
+    <script src="script.js"></script>
   </head>
-  <body>
+  <body class="light-mode">
     <div class="w-full h-screen flex justify-center">
       <div class="max-w-2xl w-full md:w-3/4 lg:w-2/4 bg-white flex flex-col">
         <div class="bg-blue-500 px-4 py-4 rounded-b">
           <p class="text-lg font-bold text-white">LB1 Chat - M324</p>
+          <button onclick="myFunction()">Dark mode</button>
         </div>
         <div class="flex-grow flex flex-col justify-start p-4 gap-4" id="messages"></div>
         <div class="bg-gray-100 px-4 py-4 flex items-center rounded-t">

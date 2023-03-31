@@ -1,3 +1,57 @@
 body {
     font-family: 'Roboto', sans-serif;
 }
+
+.dark-mode {
+    background-color: #444;
+    color: #fff;
+}
+
+.light-mode {
+    background-color: #fff;
+    color: #444;
+}
+
+body.dark-mode {
+    background-color: #444;
+    color: #fff;
+}
+
+.bg-white.dark-mode {
+    background-color: #333;
+}
+
+.bg-gray-100.dark-mode {
+    background-color: #444;
+}
+
+.bg-blue-500.dark-mode {
+    background-color: #0057b8;
+}
+
+button.dark-mode {
+    background-color: #444;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#sendButton.dark-mode {
+    background-color: #0057b8;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.bg-white.dark-mode {
+    background-color: #444;
+}
+
+input[type="text"] {
+    color: #333;
+  }
+  

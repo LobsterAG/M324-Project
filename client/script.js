@@ -59,3 +59,14 @@
     }
   });
 })();
+
+//Dark Mode
+document.body.classList.add("light-mode");
+document.querySelector(".bg-white").classList.add("light-mode");
+
+function myFunction() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+  var whiteBackground = document.querySelector(".bg-white");
+  whiteBackground.classList.toggle("dark-mode");
+}
