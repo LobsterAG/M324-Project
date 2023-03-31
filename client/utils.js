@@ -50,3 +50,30 @@ const generateMessage = (message, myUser) => {
     `;
   return messageElement;
 };
+
+const generateTyping = (_message, myUser) => {
+  const typingElement = document.createElement('div');
+  typingElement.id = 'typing';
+  typingElement.classList.add(
+    'flex',
+    'items-center',
+    'px-screen',
+    'relative',
+    'transition-opacity',
+    'opacity-0',
+    'duration-300',
+  );
+  typingElement.innerHTML = `
+      <div class="max-w-xs mx-2 px-4 py-3 rounded-lg rounded-br-none bg-gray-300 text-gray-800">
+        <p class="text-sm leading-snug">${myUser} is typing...</p>
+      </div>
+    `;
+  return typingElement;
+};
+
+const removeTyping = () => {
+  const typingElement = document.getElementById('typing');
+  if (typingElement) {
+    typingElement.remove();
+  }
+};

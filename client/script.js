@@ -1,8 +1,15 @@
 (async () => {
   const myUser = await generateRandomUser();
   let activeUsers = [];
-  let typingUsers = [];
 
+  function getCurrentMessage() {
+    const messages = document.querySelectorAll('.message');
+    if (messages.length > 0) {
+      return messages[messages.length - 1];
+    }
+    return null;
+  }
+  
   const socket = new WebSocket(generateBackendUrl());
   socket.addEventListener('open', () => {
     console.log('WebSocket connected!');
@@ -18,12 +25,27 @@
         setTimeout(() => {
           messageElement.classList.add('opacity-100');
         }, 100);
+        setTimeout(() => {
+          const currentMessage = getCurrentMessage();
+          if (currentMessage && currentMessage.type === 'typing') {
+            return;
+          }
+          removeTyping();
+        }, 100);
         break;
       case 'activeUsers':
         activeUsers = message.users;
         break;
       case 'typing':
-        typingUsers = message.users;
+        let typingElement = document.getElementById('typing');
+        if (!typingElement) {
+          typingElement = generateTyping(message, myUser);
+          document.getElementById('messages').appendChild(typingElement);
+          setTimeout(() => {
+            typingElement.classList.add('opacity-100');
+          }, 100);
+        }
+        typingElement.querySelector('p').innerHTML = `${message.users.map(u => u.name).join(', ')} is typing...`;
         break;
       default:
         break;
