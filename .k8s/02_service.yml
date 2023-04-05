@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: m324-simple-webserver
+  namespace: m324-team5
+spec:
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+  selector:
+    app: m324-simple-webserver

@@ -1,17 +1,22 @@
-# Use the official Node.js image as the base image
-FROM node:18
+FROM node:18-slim
 
-# Set the working directory inside the container
-WORKDIR ...
+# Create app directory
+WORKDIR /app
 
-# Copy the package.json and package-lock.json files to the container
-COPY ...
+# Install app dependencies
+COPY package*.json ./
+RUN yarn install
 
-# Install the dependencies
-RUN ...
+# Copy app source
+COPY . .
 
-# Copy the source code to the container
-COPY ...
+# CI in Image Build Process
+RUN yarn lint
+RUN yarn test
 
-# Start the server when the container starts
-CMD ...
+# Build
+RUN yarn build
+
+EXPOSE 3000
+
+CMD [ "yarn", "start" ]
