@@ -3,6 +3,16 @@
   let activeUsers = [];
   let typingUsers = [];
 
+  function updateActiveUsers() {
+    const activeUsersContainer = document.getElementById('activeUsersContainer');
+    activeUsersContainer.innerHTML = '';
+    activeUsers.forEach((user) => {
+      const userElement = document.createElement('p');
+      userElement.textContent = user.name;
+      activeUsersContainer.appendChild(userElement);
+    });
+  }
+
   const socket = new WebSocket(generateBackendUrl());
   socket.addEventListener('open', () => {
     console.log('WebSocket connected!');
@@ -21,6 +31,7 @@
         break;
       case 'activeUsers':
         activeUsers = message.users;
+        updateActiveUsers();
         break;
       case 'typing':
         typingUsers = message.users;
