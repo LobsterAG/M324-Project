@@ -31,6 +31,12 @@ app.use(express.static('client'));
 app.get('/', (req: Request, res: Response) => {
   res.sendFile(__dirname + '/client/index.html');
 });
+
+// healthcheck here
+app.get('/healthcheck', (req: Request, res: Response) => {
+  res.status(200).send('OK');
+});
+
 // Initialize the websocket server
 initializeWebsocketServer(server);
 
